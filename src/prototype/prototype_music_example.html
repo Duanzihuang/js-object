@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function MusicManager(list){
+            this.musicList = list || []
+        }
+
+        MusicManager.prototype = {
+            constructor:MusicManager,
+            addSong(song){
+                this.musicList.push(song)
+            },
+            findSong(songName){
+                var song = null
+                this.musicList.forEach(item => {
+                    if (item.name === songName){
+                        song = item
+                    }
+                })
+
+                return song
+            },
+            deleteSong(songName){
+                for (var i = 0;i<this.musicList.length;i++){
+                    const song = this.musicList[i]
+
+                    if (song.name === songName){
+                        this.musicList.splice(i,1)
+                    }
+                }
+            },
+            updateSong(songName,singer){
+                var song = this.findSong(songName)
+                song.singer = singer
+
+                return song
+            }
+        }
+
+        var mm = new MusicManager()
+        mm.addSong({name:'秋的思念',singer:'赵海洋'})
+        mm.addSong({name:'心太软',singer:'任贤齐'})
+        // console.log(mm.musicList)
+        // console.log(mm.findSong('心太软'))
+        // console.log(mm.updateSong('心太软','段子黄'))
+        mm.deleteSong('秋的思念')
+        // console.log(mm.musicList)
+    </script>
+</body>
+</html>

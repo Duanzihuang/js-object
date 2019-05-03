@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="num1">
+    <select id="opId">
+        <option value="0">请选择</option>
+        <option value="1">+</option>
+        <option value="2">-</option>
+        <option value="3">*</option>
+        <option value="4">/</option>
+    </select>
+    <input type="text" id="num2">
+    <button id="calcBtn">=</button>
+    <span id="spanId"></span>
+
+    <script>
+        document.getElementById('calcBtn').onclick = function(){
+            var num1Val = document.getElementById('num1').value
+            var num2Val = document.getElementById('num2').value
+
+            var opObj = {
+                "1":"+",
+                "2":"-",
+                "3":"*",
+                "4":"/"
+            }
+
+            var option = document.getElementById('opId').value
+
+            var result = eval(num1Val + opObj[option] + num2Val)
+
+            document.getElementById('spanId').innerText = result
+        }
+    </script>
+</body>
+</html>
